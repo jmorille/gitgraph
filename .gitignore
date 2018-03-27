@@ -1,0 +1,12 @@
+#IDE
+.idea
+*.iml
+
+# Node
+node_modules
+package-lock.json
+yarn-lock.json
+
+# Project
+*.log
+

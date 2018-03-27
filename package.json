@@ -1,15 +1,21 @@
 {
   "name": "gitgraph",
   "version": "1.0.0",
-  "description": "",
+  "description": "gitgraph",
   "main": "src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "browser-sync start --server --ss src -b chrome --files src/*"
+    "dev": "browser-sync start --server --ss src -b chrome --files src/*",
+    "dev2": "webpack"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "gitgraph.js": "^1.11.4"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^3.1.0",
+    "webpack": "^4.3.0",
+    "webpack-cli": "^2.0.13"
   }
 }

@@ -8,7 +8,14 @@ const config = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
-    }
+    },
+    devServer: {
+     contentBase: './dist'
+    },
+
+    plugins: [
+        new HtmlWebpackPlugin({title: 'Development' })
+        ]
 };
 
 module.exports = config;

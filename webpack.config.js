@@ -1,21 +1,42 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin'); //installed via npm
 const webpack = require('webpack'); //to access built-in plugins
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
-  mode: 'development',
-    entry: './src/index.js',
+    entry: {
+        vendors: './node_modules/gitgraph.js/build/gitgraph.js',
+        index: './src/index.html'
+    },
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name].js',
+        path: __dirname + '/dist'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.html$/,
+                use: [
+                    { loader: "html-loader", options: { minimize: false } },
+                ],
+            },
+            { test: /\.css$/, use: [MiniCssExtractPlugin.loader, "css-loader"] },
+        ]
     },
     devServer: {
      contentBase: './dist'
     },
-
     plugins: [
-        new HtmlWebpackPlugin({title: 'Development' })
-        ]
+        new HtmlWebPackPlugin({
+            template: "./src/index.html",
+            filename: "./index.html"
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+        })
+    ]
+
 };
 
 module.exports = config;
